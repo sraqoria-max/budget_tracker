@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="authScreen" class="screen center">
+    <div class="card auth-card">
+      <h1>Budget Tracker</h1>
+      <p class="muted">Track monthly expenses, income, and budgets.</p>
+      <div class="tabs">
+        <button id="showLoginBtn" class="tab-btn active">Login</button>
+        <button id="showRegisterBtn" class="tab-btn">Register</button>
+      </div>
+
+      <form id="loginForm" class="form-grid">
+        <label>Email
+          <input id="loginEmail" type="email" required />
+        </label>
+        <label>Password
+          <input id="loginPassword" type="password" minlength="6" required />
+        </label>
+        <button type="submit" class="btn primary">Login</button>
+      </form>
+
+      <form id="registerForm" class="form-grid hidden">
+        <label>Name
+          <input id="registerName" type="text" required />
+        </label>
+        <label>Email
+          <input id="registerEmail" type="email" required />
+        </label>
+        <label>Password
+          <input id="registerPassword" type="password" minlength="6" required />
+        </label>
+        <button type="submit" class="btn primary">Create Account</button>
+      </form>
+      <p id="authMessage" class="message"></p>
+    </div>
+  </div>
+
+  <div id="appScreen" class="screen hidden">
+    <header class="header card">
+      <div>
+        <h2 id="welcomeText">Welcome</h2>
+        <p class="muted">Secure local storage and offline-friendly access.</p>
+      </div>
+      <div class="header-actions">
+        <a class="btn primary" href="reports.html">View Reports</a>
+        <button id="backupBtn" class="btn">Backup</button>
+        <label class="btn file-btn">
+          Restore
+          <input id="restoreInput" type="file" accept="application/json" />
+        </label>
+        <button id="logoutBtn" class="btn danger">Logout</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h3>Dashboard</h3>
+        <div class="month-switch">
+          <label>View Month
+            <input id="viewMonth" type="month" />
+          </label>
+        </div>
+        <div class="stats-grid">
+          <div class="stat"><span>Income</span><strong id="incomeTotal">$0.00</strong></div>
+          <div class="stat"><span>Expenses</span><strong id="expenseTotal">$0.00</strong></div>
+          <div class="stat"><span>Budget</span><strong id="budgetTotal">$0.00</strong></div>
+          <div class="stat"><span>Balance</span><strong id="balanceTotal">$0.00</strong></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Monthly Budget</h3>
+        <form id="budgetForm" class="inline-form">
+          <label>Month <input id="budgetMonth" type="month" required /></label>
+          <label>Amount <input id="budgetAmount" type="number" min="0" step="0.01" required /></label>
+          <button type="submit" class="btn primary">Save Budget</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h3>Add Income</h3>
+        <form id="incomeForm" class="inline-form">
+          <label>Date <input id="incomeDate" type="date" required /></label>
+          <label>Source <input id="incomeSource" type="text" required /></label>
+          <label>Amount <input id="incomeAmount" type="number" min="0" step="0.01" required /></label>
+          <button type="submit" class="btn primary">Add Income</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h3>Add Expense</h3>
+        <form id="expenseForm" class="inline-form">
+          <label>Date <input id="expenseDate" type="date" required /></label>
+          <label>Title <input id="expenseTitle" type="text" required /></label>
+          <label>Category
+            <select id="expenseCategory" required>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Rent">Rent</option>
+              <option value="Utilities">Utilities</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Health">Health</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <label>Amount <input id="expenseAmount" type="number" min="0" step="0.01" required /></label>
+          <button type="submit" class="btn primary">Add Expense</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h3>Expenses</h3>
+        <div id="expenseList" class="list"></div>
+      </section>
+
+      <section class="card">
+        <h3>Income History</h3>
+        <div id="incomeList" class="list"></div>
+      </section>
+
+      <section class="card">
+        <h3>Category-wise Tracking</h3>
+        <div id="categoryReport"></div>
+      </section>
+
+    </main>
+    <p id="appMessage" class="message"></p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

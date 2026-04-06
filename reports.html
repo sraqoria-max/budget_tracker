@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget Tracker - Reports</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="screen">
+    <header class="header card">
+      <div>
+        <h2 id="reportsTitle">Reports & Analytics</h2>
+        <p class="muted">Monthly financial insights and category analytics.</p>
+      </div>
+      <div class="header-actions">
+        <a class="btn" href="index.html">Back to Dashboard</a>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h3>Monthly Analytics</h3>
+        <div class="month-switch">
+          <label>Select Month
+            <input id="reportMonth" type="month" />
+          </label>
+        </div>
+        <div class="stats-grid">
+          <div class="stat"><span>Income</span><strong id="rIncome">$0.00</strong></div>
+          <div class="stat"><span>Expenses</span><strong id="rExpense">$0.00</strong></div>
+          <div class="stat"><span>Budget</span><strong id="rBudget">$0.00</strong></div>
+          <div class="stat"><span>Savings</span><strong id="rSavings">$0.00</strong></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Budget Usage</h3>
+        <div class="progress-wrap">
+          <div id="rBudgetBar" class="progress-bar"></div>
+        </div>
+        <p id="rBudgetText" class="muted"></p>
+      </section>
+
+      <section class="card">
+        <h3>Category Spending</h3>
+        <div class="pie-layout">
+          <div class="pie-wrap">
+            <div id="rCategoryPie" class="pie-chart"></div>
+          </div>
+          <div id="rCategoryLegend" class="pie-legend"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Category Summary</h3>
+        <div id="rCategorySummary"></div>
+      </section>
+    </main>
+    <p id="reportsMessage" class="message"></p>
+  </div>
+
+  <script src="reports.js"></script>
+</body>
+</html>
